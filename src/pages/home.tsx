@@ -1,14 +1,17 @@
 import {
   ArrowLeft,
   DollarSignIcon,
+  Eye,
   HandCoinsIcon,
   HandshakeIcon,
   User,
 } from 'lucide-react'
 
-import RenderMenuItem from '../components/render-menu-item'
+import MenuItem from '../components/render-menu-item'
 
 const Home = () => {
+  const amount = undefined
+
   return (
     <div className="flex h-screen w-full">
       <div className="w-96 border-r border-stone-800 bg-black">
@@ -19,9 +22,9 @@ const Home = () => {
           <span className="text-lg font-medium text-white">Hi, Rocha</span>
         </div>
         <div className="mt-14 h-[700px] w-full">
-          {RenderMenuItem(DollarSignIcon, 'Deposit')}
-          {RenderMenuItem(HandshakeIcon, 'Withdraw')}
-          {RenderMenuItem(HandCoinsIcon, 'Transfer')}
+          {MenuItem(DollarSignIcon, 'Deposit')}
+          {MenuItem(HandshakeIcon, 'Withdraw')}
+          {MenuItem(HandCoinsIcon, 'Transfer')}
         </div>
         <div className="flex h-24 w-full items-center gap-1 p-5 text-white ">
           <ArrowLeft className="mt-0.5" size={23} />
@@ -36,8 +39,16 @@ const Home = () => {
         <div className="flex h-28 items-center gap-52 border-b border-stone-800 px-40 text-white ">
           <span className="text-2xl">Account</span>
           <div className="flex flex-col justify-center">
-            <span className="text-xl">Balance available</span>
-            <span>******</span>
+            <div className="flex items-center gap-4">
+              <span className="text-xl">Balance available</span>
+              <Eye className="mt-1" size={20} />
+            </div>
+
+            {amount != undefined ? (
+              <span className="font-semibold">${amount}</span>
+            ) : (
+              <span>******</span>
+            )}
           </div>
         </div>
       </div>
