@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
 const loginSchema = z.object({
@@ -79,9 +79,12 @@ const LoginForm = () => {
                   {errors.password?.message && <>{errors.password?.message}</>}
                 </div>
                 <br />
-                <span className="text-lime-600 hover:text-lime-600">
+                <Link
+                  to={'/forgot-password'}
+                  className="text-lime-600 transition duration-200 hover:text-lime-700"
+                >
                   Forgot password
-                </span>
+                </Link>
               </div>
 
               <div className="mt-14 flex justify-center">
@@ -97,8 +100,8 @@ const LoginForm = () => {
                 </button>
               </div>
             </form>
-            <div className="flex flex-col items-center justify-center gap-10 p-3 font-medium text-lime-600">
-              <span>Create account</span>
+            <div className="flex flex-col items-center justify-center gap-10 p-3 font-medium text-lime-600 transition duration-200 hover:text-lime-700">
+              <Link to={'/create-account'}>Create account</Link>
             </div>
           </div>
         </div>
