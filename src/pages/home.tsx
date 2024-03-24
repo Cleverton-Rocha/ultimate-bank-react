@@ -9,7 +9,7 @@ import {
 
 import MenuItem from '../components/render-menu-item'
 
-const Home = () => {
+const Home: React.FC = () => {
   const amount = undefined
 
   return (
@@ -22,9 +22,9 @@ const Home = () => {
           <span className="text-lg font-medium text-white">Hi, Rocha</span>
         </div>
         <div className="mt-14 h-[700px] w-full">
-          {MenuItem(DollarSignIcon, 'Deposit')}
-          {MenuItem(HandshakeIcon, 'Withdraw')}
-          {MenuItem(HandCoinsIcon, 'Transfer')}
+          {MenuItem({ Icon: DollarSignIcon, label: 'Deposit' })}
+          {MenuItem({ Icon: HandshakeIcon, label: 'Withdraw' })}
+          {MenuItem({ Icon: HandCoinsIcon, label: 'Transfer' })}
         </div>
         <div className="flex h-24 w-full items-center gap-1 p-5 text-white ">
           <ArrowLeft className="mt-0.5" size={23} />
