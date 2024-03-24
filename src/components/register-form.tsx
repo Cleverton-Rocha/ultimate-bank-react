@@ -44,7 +44,7 @@ const RegisterForm: React.FC = () => {
 
   return (
     <main className="flex h-screen flex-col items-center justify-center bg-zinc-950">
-      <section className="flex h-[650px] w-[380px] flex-col gap-5 text-white">
+      <section className="flex h-[750px] w-[380px] flex-col gap-5 text-white">
         <div>
           <h1 className="text-[24px] font-semibold">Create your account</h1>
         </div>
