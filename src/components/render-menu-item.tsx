@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 
-const MenuItem = (IconComponent: React.ElementType, label: string) => {
+type MenuItemProps = {
+  Icon: React.ElementType
+  label: string
+}
+
+const MenuItem: React.FC<MenuItemProps> = ({ Icon, label }) => {
   return (
     <div className="flex h-20 w-full items-center gap-4 bg-black p-4">
       <div className="rounded-full border border-lime-500 bg-lime-500 p-3">
-        <IconComponent className="text-white" size={24} />
+        <Icon className="text-white" size={24} />
       </div>
       <Link
         to={`/${label}`}
