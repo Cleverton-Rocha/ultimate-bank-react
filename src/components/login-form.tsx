@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ChevronRight } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { z } from 'zod'
@@ -88,7 +87,6 @@ const LoginForm: React.FC = () => {
               >
                 <div className="flex items-center justify-center">
                   <span>Login</span>
-                  <ChevronRight className="mt-1.5" size={18} />
                 </div>
               </button>
             </div>
