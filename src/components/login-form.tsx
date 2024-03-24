@@ -14,7 +14,7 @@ const loginSchema = z.object({
 
 type LoginFormValues = z.infer<typeof loginSchema>
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
   const [loading, setLoading] = useState(false)
 
   const {
