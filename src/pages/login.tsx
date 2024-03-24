@@ -1,4 +1,4 @@
-import RegisterForm from '../components/register-form'
+import LoginForm from '../components/login-form'
 
 const Login: React.FC = () => {
   return (
@@ -14,8 +14,7 @@ const Login: React.FC = () => {
             className="hidden h-screen w-full object-cover object-center lg:block"
           />
         </div>
-        {/* <LoginForm /> */}
-        <RegisterForm />
+        <LoginForm />
       </div>
     </>
   )
