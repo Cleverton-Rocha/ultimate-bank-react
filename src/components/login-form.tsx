@@ -2,8 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { z } from 'zod'
+import { useState } from 'react'
 
 import { handleCPFInput } from '../lib/utils'
+
+import PasswordToggle from './password-toggle'
 
 const loginSchema = z.object({
   CPF: z
@@ -18,6 +21,8 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>
 
 const LoginForm: React.FC = () => {
+  const [inputType, setInputType] = useState('password')
+
   const {
     register,
     handleSubmit,
@@ -51,6 +56,7 @@ const LoginForm: React.FC = () => {
               <input
                 type="text"
                 {...register('CPF')}
+                placeholder="000.000.000-00"
                 className="mb-2 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
                 onInput={handleCPFInput}
               />
@@ -64,15 +70,21 @@ const LoginForm: React.FC = () => {
             <div className="mt-8">
               <label
                 htmlFor="password"
-                className="text-md font-semibold text-white text-opacity-70"
+                className="text-md flex items-center gap-4 font-semibold text-white text-opacity-70"
               >
-                Password
+                <span>Password</span>
+                <PasswordToggle
+                  inputType={inputType}
+                  setInputType={setInputType}
+                />
               </label>
               <input
-                type="password"
+                type={inputType}
                 {...register('password')}
+                placeholder="********"
                 className="mb-2 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg outline-none"
               />
+
               {errors.password && (
                 <span className="text-sm text-red-500">
                   {errors.password.message}
