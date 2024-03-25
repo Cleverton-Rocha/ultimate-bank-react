@@ -12,7 +12,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ Icon, label }) => {
         <Icon className="text-white" size={24} />
       </div>
       <Link
-        to={`/${label}`}
+        to={`/${label.toLocaleLowerCase()}`}
         className="cursor-pointer text-lg font-medium text-white transition duration-200 hover:text-lime-600"
       >
         {label}
