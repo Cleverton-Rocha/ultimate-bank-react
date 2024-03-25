@@ -3,12 +3,10 @@ import LoginForm from '../components/login-form'
 
 const Login: React.FC = () => {
   return (
-    <>
-      <div className="grid grid-cols-1 bg-zinc-950 md:grid-cols-1 lg:grid-cols-2">
-        <Header />
-        <LoginForm />
-      </div>
-    </>
+    <div className="grid grid-cols-1 bg-zinc-950 md:grid-cols-1 lg:grid-cols-2">
+      <Header />
+      <LoginForm />
+    </div>
   )
 }
 
