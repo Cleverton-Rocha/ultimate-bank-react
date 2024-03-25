@@ -45,6 +45,8 @@ const RegisterForm: React.FC = () => {
 
   const onSubmit = (data: RegisterFormValues) => {
     console.log(data)
+    //finish the implementation
+    //redirect to login after register
   }
 
   return (
