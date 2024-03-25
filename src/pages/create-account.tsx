@@ -3,12 +3,10 @@ import RegisterForm from '../components/register-form'
 
 const CreateAccount: React.FC = () => {
   return (
-    <>
-      <div className="grid grid-cols-1 bg-zinc-950 md:grid-cols-1 lg:grid-cols-2">
-        <Header />
-        <RegisterForm />
-      </div>
-    </>
+    <div className="grid grid-cols-1 bg-zinc-950 md:grid-cols-1 lg:grid-cols-2">
+      <Header />
+      <RegisterForm />
+    </div>
   )
 }
 export default CreateAccount
