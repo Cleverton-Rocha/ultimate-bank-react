@@ -2,8 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 import { handleCPFInput, handleNameInput } from '../lib/utils'
+
+import PasswordToggle from './password-toggle'
 
 const registerSchema = z
   .object({
@@ -30,6 +33,8 @@ const registerSchema = z
 type RegisterFormValues = z.infer<typeof registerSchema>
 
 const RegisterForm: React.FC = () => {
+  const [inputType, setInputType] = useState('password')
+
   const {
     register,
     handleSubmit,
@@ -61,6 +66,7 @@ const RegisterForm: React.FC = () => {
               <input
                 type="text"
                 {...register('name')}
+                placeholder="Your name"
                 className="mb-1 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
                 onInput={handleNameInput}
               />
@@ -81,6 +87,7 @@ const RegisterForm: React.FC = () => {
               <input
                 type="text"
                 {...register('email')}
+                placeholder="example@email.com"
                 className="mb-0.5 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
               />
               {errors.email && (
@@ -100,6 +107,7 @@ const RegisterForm: React.FC = () => {
               <input
                 type="text"
                 {...register('CPF')}
+                placeholder="000.000.000-00"
                 className="mb-0.5 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
                 onInput={handleCPFInput}
               />
@@ -113,13 +121,18 @@ const RegisterForm: React.FC = () => {
             <div className="mb-3">
               <label
                 htmlFor="password"
-                className="text-md font-semibold text-white text-opacity-70"
+                className="text-md flex items-center gap-4 font-semibold text-white text-opacity-70"
               >
-                Password
+                <span>Password</span>
+                <PasswordToggle
+                  inputType={inputType}
+                  setInputType={setInputType}
+                />
               </label>
               <input
-                type="password"
+                type={inputType}
                 {...register('password')}
+                placeholder="********"
                 className="mb-0.5 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg outline-none"
               />
               {errors.password && (
@@ -132,13 +145,14 @@ const RegisterForm: React.FC = () => {
             <div className="mb-3">
               <label
                 htmlFor="confirmPassword"
-                className="text-md font-semibold text-white text-opacity-70"
+                className="text-md flex items-center gap-4 font-semibold text-white text-opacity-70"
               >
-                Confirm password
+                <span>Confirm password</span>
               </label>
               <input
-                type="password"
+                type={inputType}
                 {...register('confirmPassword')}
+                placeholder="********"
                 className="mb-0.5 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg outline-none"
               />
               {errors.confirmPassword && (
