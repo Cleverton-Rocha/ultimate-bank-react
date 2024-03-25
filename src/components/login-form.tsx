@@ -109,6 +109,7 @@ const LoginForm: React.FC = () => {
               className="flex items-center text-lime-600 transition duration-200 hover:text-lime-700"
             >
               <span>Forgot password</span>
+              {/*adicionar função de esqueci senha */}
             </Link>
             <span>or</span>
             <Link
