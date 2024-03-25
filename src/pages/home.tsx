@@ -79,7 +79,7 @@ const Home: React.FC = () => {
           <div className="flex h-96 items-center gap-44 border-b border-zinc-800 px-40 text-white ">
             <span className="text-2xl">Credit card</span>
             <div className="flex items-center justify-center gap-8">
-              <div className="w-[350px] rounded-lg border border-lime-950 bg-gradient-to-r from-emerald-600 via-lime-500 to-lime-700 p-8 font-medium text-white shadow-2xl shadow-lime-900">
+              <div className="w-[350px] rounded-lg border border-lime-950 bg-gradient-to-r from-lime-500 via-lime-600 to-lime-700 p-8 font-medium text-white shadow-2xl shadow-lime-900">
                 <div className="mb-2 flex justify-end">
                   <img
                     src="https://img.icons8.com/color/48/000000/visa.png"
