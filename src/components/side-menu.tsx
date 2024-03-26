@@ -13,7 +13,7 @@ const SideMenu = () => {
   return (
     <>
       <div className="w-80 border-r border-zinc-800 bg-zinc-950">
-        <div className="flex h-20 w-full items-center gap-4 bg-lime-600 p-4">
+        <div className="flex h-20 w-full items-center gap-4 rounded-s bg-lime-600 p-4">
           <div className="rounded-full border border-lime-500 bg-lime-500 p-3">
             <User className="text-white" size={24} />
           </div>
@@ -22,9 +22,9 @@ const SideMenu = () => {
 
         <div className="mt-14 h-[700px] w-full ">
           <MenuItem href="/home" label="Home" Icon={LandmarkIcon} />
+          <MenuItem href="/transfer" label="Transfer" Icon={HandCoinsIcon} />
           <MenuItem href="/deposit" label="Deposit" Icon={DollarSignIcon} />
           <MenuItem href="/withdraw" label="Withdraw" Icon={HandshakeIcon} />
-          <MenuItem href="/transfer" label="Transfer" Icon={HandCoinsIcon} />
         </div>
 
         <div className="flex h-24 w-full items-center gap-1 p-5 text-white ">
