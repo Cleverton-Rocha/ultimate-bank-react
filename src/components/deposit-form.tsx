@@ -7,7 +7,7 @@ import { handleAmountInput } from '../lib/utils'
 const depositSchema = z.object({
   amount: z
     .string()
-    .min(1, { message: 'Amount must be greater than 1.' })
+    .min(1, { message: 'Amount must be greater than 0.' })
     .max(8, { message: 'Amount must have at most 6 characters.' })
     .transform((amount) => amount.replace(/\D/g, '')),
   description: z
