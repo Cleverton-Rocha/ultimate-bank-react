@@ -38,8 +38,8 @@ const LoginForm: React.FC = () => {
   }
 
   return (
-    <main className="flex h-screen flex-col items-center justify-center bg-zinc-950">
-      <section className="flex h-[500px] w-[380px] flex-col gap-5 text-white">
+    <div className="flex h-screen flex-col items-center justify-center bg-zinc-950">
+      <div className="flex h-[500px] w-[380px] flex-col gap-5 text-white">
         <div>
           <h1 className="text-[24px] font-semibold">Access your account</h1>
         </div>
@@ -120,8 +120,8 @@ const LoginForm: React.FC = () => {
             </Link>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   )
 }
 
