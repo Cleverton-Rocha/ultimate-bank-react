@@ -3,6 +3,7 @@ import {
   DollarSignIcon,
   HandCoinsIcon,
   HandshakeIcon,
+  LandmarkIcon,
   User,
 } from 'lucide-react'
 
@@ -20,9 +21,10 @@ const SideMenu = () => {
         </div>
 
         <div className="mt-14 h-[700px] w-full ">
-          {MenuItem({ Icon: DollarSignIcon, label: 'Deposit' })}
-          {MenuItem({ Icon: HandshakeIcon, label: 'Withdraw' })}
-          {MenuItem({ Icon: HandCoinsIcon, label: 'Transfer' })}
+          <MenuItem href="/home" label="Home" Icon={LandmarkIcon} />
+          <MenuItem href="/deposit" label="Deposit" Icon={DollarSignIcon} />
+          <MenuItem href="/withdraw" label="Withdraw" Icon={HandshakeIcon} />
+          <MenuItem href="/transfer" label="Transfer" Icon={HandCoinsIcon} />
         </div>
 
         <div className="flex h-24 w-full items-center gap-1 p-5 text-white ">
