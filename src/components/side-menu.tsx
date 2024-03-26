@@ -1,5 +1,4 @@
 import {
-  ArrowLeft,
   DollarSignIcon,
   HandCoinsIcon,
   HandshakeIcon,
@@ -8,6 +7,7 @@ import {
 } from 'lucide-react'
 
 import MenuItem from './menu-item'
+import Logout from './logout'
 
 const SideMenu = () => {
   return (
@@ -22,16 +22,11 @@ const SideMenu = () => {
 
         <div className="mt-14 h-[700px] w-full ">
           <MenuItem href="/home" label="Home" Icon={LandmarkIcon} />
-          <MenuItem href="/transfer" label="Transfer" Icon={HandCoinsIcon} />
+          <MenuItem href="/transfer" label="Transfer" Icon={HandshakeIcon} />
           <MenuItem href="/deposit" label="Deposit" Icon={DollarSignIcon} />
-          <MenuItem href="/withdraw" label="Withdraw" Icon={HandshakeIcon} />
+          <MenuItem href="/withdraw" label="Withdraw" Icon={HandCoinsIcon} />
         </div>
-
-        <div className="flex h-24 w-full items-center gap-1 p-5 text-white ">
-          <ArrowLeft className="mt-0.5" size={23} />
-          <span className="text-xl">Logout</span>
-          {/* Handle logout  */}
-        </div>
+        <Logout />
       </div>
     </>
   )
