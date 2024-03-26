@@ -1,9 +1,9 @@
-// import { type ClassValue, clsx } from 'clsx'
-// import { twMerge } from 'tailwind-merge'
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
-// export function cn(...inputs: ClassValue[]) {
-//   return twMerge(clsx(inputs))
-// }
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 export const formatCPF = (CPF: string) => {
   let value = CPF.replace(/\D/g, '')
@@ -28,7 +28,7 @@ export const formatAmount = (amount: string) => {
   let value = amount.replace(/\D/g, '')
   value = `$${value.slice(0, 6)}`
 
-  if (value.length > 3) {
+  if (value.length > 4) {
     value = `${value.slice(0, -3)}.${value.slice(-3)}`
   }
   return value
