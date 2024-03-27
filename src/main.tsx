@@ -9,6 +9,7 @@ import Login from './pages/login.tsx'
 import CreateAccount from './pages/create-account.tsx'
 import Deposit from './pages/deposit.tsx'
 import Transfer from './pages/transfer.tsx'
+import Withdraw from './pages/withdraw.tsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/transfer',
         element: <Transfer />,
+      },
+      {
+        path: '/withdraw',
+        element: <Withdraw />,
       },
     ],
   },
