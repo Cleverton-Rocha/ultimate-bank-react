@@ -72,7 +72,7 @@ const LoginForm: React.FC = () => {
                 htmlFor="password"
                 className="text-md flex items-center gap-4 font-semibold text-white text-opacity-70"
               >
-                <span>Password</span>
+                <span className="select-none">Password</span>
                 <PasswordToggle
                   inputType={inputType}
                   setInputType={setInputType}
