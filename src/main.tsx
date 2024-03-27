@@ -8,18 +8,19 @@ import Home from './pages/home.tsx'
 import Login from './pages/login.tsx'
 import CreateAccount from './pages/create-account.tsx'
 import Deposit from './pages/deposit.tsx'
+import Transfer from './pages/transfer.tsx'
 
 const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       {
-        path: '/home',
-        element: <Home />,
-      },
-      {
         path: '/',
         element: <Login />,
+      },
+      {
+        path: '/home',
+        element: <Home />,
       },
       {
         path: '/create-account',
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/deposit',
         element: <Deposit />,
+      },
+      {
+        path: '/transfer',
+        element: <Transfer />,
       },
     ],
   },
