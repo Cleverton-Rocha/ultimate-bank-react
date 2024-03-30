@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { useState } from 'react'
 
 import { handleCPFInput } from '../lib/utils'
+import { useLogin } from '../queries/user'
 
 import PasswordToggle from './password-toggle'
 
@@ -18,7 +19,7 @@ const loginSchema = z.object({
     .min(8, { message: 'Password must have at least 8 characters.' }),
 })
 
-type LoginFormValues = z.infer<typeof loginSchema>
+export type LoginFormValues = z.infer<typeof loginSchema>
 
 const LoginForm: React.FC = () => {
   const [inputType, setInputType] = useState('password')
@@ -31,10 +32,10 @@ const LoginForm: React.FC = () => {
     resolver: zodResolver(loginSchema),
   })
 
+  const login = useLogin()
+
   const onSubmit = (data: LoginFormValues) => {
-    console.log(data)
-    //Terminar a função de submit
-    //Salvar token em cookies
+    login.mutate(data)
   }
 
   return (
