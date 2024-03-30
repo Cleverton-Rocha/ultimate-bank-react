@@ -1,8 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import Cookies from 'js-cookie'
 
 import { handleAmountInput, handleCPFInput } from '../lib/utils'
+import { useTransfer } from '../queries/account'
 
 const transferSchema = z.object({
   amount: z
@@ -13,7 +15,7 @@ const transferSchema = z.object({
   description: z
     .string()
     .min(1, { message: 'Description must have at least 1 character.' }),
-  recipientCPF: z
+  receiverCPF: z
     .string()
     .length(14, { message: 'Write a valid CPF.' })
     .transform((CPF) => CPF.replace(/\D/g, '')),
@@ -26,12 +28,22 @@ const TransferForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<TransferFormValues>({
     resolver: zodResolver(transferSchema),
   })
 
+  const transfer = useTransfer()
+
+  const hashedCPF = Cookies.get('hashedCPF') ?? ''
   const onSubmit = (data: TransferFormValues) => {
-    console.log(data)
+    transfer.mutate({
+      hashedCPF,
+      amount: data.amount,
+      receiverCPF: data.receiverCPF,
+      description: data.description,
+    })
+    reset()
   }
 
   return (
@@ -49,14 +61,14 @@ const TransferForm = () => {
               </label>
               <input
                 type="text"
-                {...register('recipientCPF')}
+                {...register('receiverCPF')}
                 placeholder="000.000.000-00"
                 className="mb-2 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
                 onInput={handleCPFInput}
               />
-              {errors.recipientCPF && (
+              {errors.receiverCPF && (
                 <span className="text-sm text-red-500">
-                  {errors.recipientCPF.message}
+                  {errors.receiverCPF.message}
                 </span>
               )}
             </div>
