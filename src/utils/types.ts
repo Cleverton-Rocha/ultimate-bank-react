@@ -33,3 +33,17 @@ export interface RegisterResponse {
   email: string
   password: string
 }
+
+export interface transactionRequest {
+  hashedCPF: string
+  amount: number
+  type: string
+  description: string
+}
+
+export interface transferRequest {
+  hashedCPF: string
+  receiverCPF: string
+  amount: number
+  description: string
+}
