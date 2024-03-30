@@ -1,8 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import Cookies from 'js-cookie'
 
 import { handleAmountInput } from '../lib/utils'
+import { useTransaction } from '../queries/account'
 
 const depositSchema = z.object({
   amount: z
@@ -22,12 +24,22 @@ const DepositForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<DepositFormValues>({
     resolver: zodResolver(depositSchema),
   })
 
+  const transaction = useTransaction()
+
+  const hashedCPF = Cookies.get('hashedCPF') ?? ''
   const onSubmit = (data: DepositFormValues) => {
-    console.log(data)
+    transaction.mutate({
+      hashedCPF,
+      amount: Number(data.amount),
+      description: data.description,
+      type: 'Deposit',
+    })
+    reset()
   }
   return (
     <>
