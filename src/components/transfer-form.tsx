@@ -9,7 +9,7 @@ const transferSchema = z.object({
     .string()
     .min(1, { message: 'Amount must be greater than 0.' })
     .max(8, { message: 'Amount must have at most 6 characters.' })
-    .transform((amount) => amount.replace(/\D/g, '')),
+    .transform((amount) => Number(amount.replace(/\D/g, ''))),
   description: z
     .string()
     .min(1, { message: 'Description must have at least 1 character.' }),
