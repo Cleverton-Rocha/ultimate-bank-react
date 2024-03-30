@@ -1,12 +1,14 @@
 import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const Logout = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
     navigate('/')
-    // Remove token from cookies
+    Cookies.remove('token')
+    Cookies.remove('hashedCPF')
   }
 
   return (
