@@ -5,11 +5,16 @@ import {
   LandmarkIcon,
   User,
 } from 'lucide-react'
+import Cookies from 'js-cookie'
+
+import { useUser } from '../queries/user'
 
 import MenuItem from './menu-item'
 import Logout from './logout'
 
 const SideMenu = () => {
+  const { data, isLoading } = useUser(Cookies.get('hashedCPF') || '')
+
   return (
     <>
       <div className="w-80 border-r border-zinc-800 bg-zinc-950">
@@ -17,7 +22,13 @@ const SideMenu = () => {
           <div className="rounded-full border border-lime-500 bg-lime-500 p-3">
             <User className="text-white" size={24} />
           </div>
-          <span className="text-lg font-medium text-white">Hi, Rocha</span>
+          {isLoading ? (
+            <div className="flex items-center justify-center">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-800 border-t-lime-500" />
+            </div>
+          ) : (
+            <span className="text-lg font-medium text-white">{`Welcome, ${data?.name}`}</span>
+          )}
         </div>
 
         <div className="mt-14 h-[700px] w-full ">
