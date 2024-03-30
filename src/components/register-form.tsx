@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 import { handleCPFInput, handleNameInput } from '../lib/utils'
+import { useRegister } from '../queries/user'
 
 import PasswordToggle from './password-toggle'
 
@@ -13,7 +14,7 @@ const registerSchema = z
     name: z
       .string()
       .min(3, 'Name must have at least 3 characters.')
-      .max(25, 'Name must have at most 15 characters.')
+      .max(55, 'Name must have at most 55 characters.')
       .transform((name) => name.replace(/[0-9]/g, '')),
     email: z.string().email('Write a valid email.'),
     CPF: z
@@ -30,7 +31,7 @@ const registerSchema = z
     path: ['confirmPassword'],
   })
 
-type RegisterFormValues = z.infer<typeof registerSchema>
+export type RegisterFormValues = z.infer<typeof registerSchema>
 
 const RegisterForm: React.FC = () => {
   const [inputType, setInputType] = useState('password')
@@ -43,10 +44,10 @@ const RegisterForm: React.FC = () => {
     resolver: zodResolver(registerSchema),
   })
 
+  const registerAccount = useRegister()
+
   const onSubmit = (data: RegisterFormValues) => {
-    console.log(data)
-    //finish the implementation
-    //redirect to login after register
+    registerAccount.mutate(data)
   }
 
   return (
