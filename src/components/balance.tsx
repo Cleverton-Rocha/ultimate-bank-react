@@ -1,13 +1,20 @@
 import { EyeOffIcon, EyeIcon } from 'lucide-react'
 import { useState } from 'react'
+import Cookies from 'js-cookie'
+
+import { useUser } from '../queries/user'
 
 const Balance = () => {
   const [showBalance, setShowBalance] = useState<boolean>(false)
 
-  const amount = '15.000'
   const handleToggleBalance = () => {
     setShowBalance(!showBalance)
   }
+
+  const hashedCPF = Cookies.get('hashedCPF') || ''
+
+  const { data, isLoading } = useUser(hashedCPF)
+
   return (
     <>
       <div className="flex h-28 items-center gap-52 border-b border-zinc-800 px-40 text-white ">
@@ -30,8 +37,12 @@ const Balance = () => {
             )}
           </div>
 
-          {showBalance ? (
-            <span className="font-semibold">${amount}</span>
+          {isLoading ? (
+            <div className="flex items-center">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-800 border-t-lime-500" />
+            </div> //criar componente isLoading
+          ) : showBalance ? (
+            <span className="font-semibold">${data?.account.balance}</span>
           ) : (
             <span>******</span>
           )}
