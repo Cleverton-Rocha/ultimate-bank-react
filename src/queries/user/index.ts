@@ -3,14 +3,14 @@ import Cookies from 'js-cookie'
 import { AxiosError } from 'axios'
 import toast from 'react-hot-toast'
 
-import { getLogin, getRegister, getUser } from '../../services/api'
+import { login, register, getUser } from '../../services/api'
 import { LoginFormValues } from '../../components/login-form'
 import { RegisterFormValues } from '../../components/register-form'
 
 export function useRegister() {
   return useMutation({
     mutationFn: (data: RegisterFormValues) => {
-      return getRegister(data)
+      return register(data)
     },
     onSuccess: () => {
       toast.success('Account created successfully!')
@@ -19,7 +19,8 @@ export function useRegister() {
       }, 1500)
     },
     onError: (error: AxiosError) => {
-      toast.error(error.response?.data as string)
+      const errorMessage = error.response?.data as string
+      toast.error(errorMessage)
     },
   })
 }
@@ -27,7 +28,7 @@ export function useRegister() {
 export function useLogin() {
   return useMutation({
     mutationFn: (data: LoginFormValues) => {
-      return getLogin(data)
+      return login(data)
     },
     onSuccess: (response) => {
       Cookies.set('token', response.accessToken, { expires: 0.00694 })
@@ -38,14 +39,15 @@ export function useLogin() {
       }, 1500)
     },
     onError: (error: AxiosError) => {
-      toast.error(error.response?.data as string)
+      const errorMessage = error.response?.data as string
+      toast.error(errorMessage)
     },
   })
 }
 
-export function useUser(CPF: string) {
+export function useUser(hashedCPF: string) {
   return useQuery({
-    queryKey: ['user', CPF],
-    queryFn: () => getUser(CPF),
+    queryKey: ['user', hashedCPF],
+    queryFn: () => getUser(hashedCPF),
   })
 }
