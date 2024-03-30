@@ -1,8 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import Cookies from 'js-cookie'
 
 import { handleAmountInput } from '../lib/utils'
+import { useTransaction } from '../queries/account'
 
 const withdrawSchema = z.object({
   amount: z
@@ -22,12 +24,22 @@ const WithdrawForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<WithdrauFormValues>({
     resolver: zodResolver(withdrawSchema),
   })
 
+  const transaction = useTransaction()
+
+  const hashedCPF = Cookies.get('hashedCPF') ?? ''
   const onSubmit = (data: WithdrauFormValues) => {
-    console.log(data)
+    transaction.mutate({
+      hashedCPF,
+      amount: Number(data.amount),
+      type: 'Withdraw',
+      description: data.description,
+    })
+    reset()
   }
 
   return (
