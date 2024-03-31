@@ -11,11 +11,14 @@ import PasswordToggle from './password-toggle'
 
 const registerSchema = z
   .object({
-    name: z
+    firstName: z
       .string()
-      .min(3, 'Name must have at least 3 characters.')
-      .max(55, 'Name must have at most 55 characters.')
-      .transform((name) => name.replace(/[0-9]/g, '')),
+      .min(1, 'Name must have at least 1 characters.')
+      .transform((firstName) => firstName.replace(/[0-9]/g, '')),
+    lastName: z
+      .string()
+      .min(1, 'Name must have at least 1 characters.')
+      .transform((lastName) => lastName.replace(/[0-9]/g, '')),
     email: z.string().email('Write a valid email.'),
     CPF: z
       .string()
@@ -61,21 +64,42 @@ const RegisterForm: React.FC = () => {
           <form onSubmit={handleSubmit((data) => onSubmit(data))}>
             <div className="mb-3">
               <label
-                htmlFor="name"
+                htmlFor="firstName"
                 className="text-md font-semibold text-white text-opacity-70"
               >
-                Name
+                First name
               </label>
               <input
                 type="text"
-                {...register('name')}
-                placeholder="Your name"
+                {...register('firstName')}
+                placeholder="Your first name"
                 className="mb-1 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
                 onInput={handleNameInput}
               />
-              {errors.name && (
+              {errors.firstName && (
                 <span className="text-sm text-red-500">
-                  {errors.name.message}
+                  {errors.firstName.message}
+                </span>
+              )}
+            </div>
+
+            <div className="mb-3">
+              <label
+                htmlFor="name"
+                className="text-md font-semibold text-white text-opacity-70"
+              >
+                Last name
+              </label>
+              <input
+                type="text"
+                {...register('lastName')}
+                placeholder="Your last name"
+                className="mb-1 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg font-semibold outline-none"
+                onInput={handleNameInput}
+              />
+              {errors.lastName && (
+                <span className="text-sm text-red-500">
+                  {errors.lastName.message}
                 </span>
               )}
             </div>
