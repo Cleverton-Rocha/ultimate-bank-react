@@ -14,7 +14,8 @@ const depositSchema = z.object({
     .transform((amount) => amount.replace(/\D/g, '')),
   description: z
     .string()
-    .min(1, { message: 'Description must have at least 1 character.' }),
+    .min(1, { message: 'Description must have at least 1 character.' })
+    .max(50, { message: 'Description must have at most 50 characters.' }),
 })
 
 type DepositFormValues = z.infer<typeof depositSchema>
