@@ -14,7 +14,8 @@ const transferSchema = z.object({
     .transform((amount) => Number(amount.replace(/\D/g, ''))),
   description: z
     .string()
-    .min(1, { message: 'Description must have at least 1 character.' }),
+    .min(1, { message: 'Description must have at least 1 character.' })
+    .max(50, { message: 'Description must have at most 50 characters.' }),
   receiverCPF: z
     .string()
     .length(14, { message: 'Write a valid CPF.' })
@@ -23,7 +24,7 @@ const transferSchema = z.object({
 
 type TransferFormValues = z.infer<typeof transferSchema>
 
-const TransferForm = () => {
+const TransferForm: React.FC = () => {
   const {
     register,
     handleSubmit,
