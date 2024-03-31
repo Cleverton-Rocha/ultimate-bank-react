@@ -31,8 +31,8 @@ export function useLogin() {
       return login(data)
     },
     onSuccess: (response) => {
-      Cookies.set('token', response.accessToken, { expires: 0.00694 })
-      Cookies.set('hashedCPF', response.hashedCPF, { expires: 0.00694 })
+      Cookies.set('token', response.accessToken, { expires: 1 / 12 })
+      Cookies.set('hashedCPF', response.hashedCPF, { expires: 1 / 12 })
       toast.success('Logged in successfully!')
       setTimeout(() => {
         window.location.href = '/home'
