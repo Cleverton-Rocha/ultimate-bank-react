@@ -13,7 +13,9 @@ import MenuItem from './menu-item'
 import Logout from './logout'
 
 const SideMenu = () => {
-  const { data, isLoading } = useUser(Cookies.get('hashedCPF') || '')
+  const hashedCPF = Cookies.get('hashedCPF') ?? ''
+
+  const { data, isLoading } = useUser(hashedCPF)
 
   return (
     <>
@@ -27,7 +29,7 @@ const SideMenu = () => {
               <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-800 border-t-lime-500" />
             </div>
           ) : (
-            <span className="text-lg font-medium text-white">{`Welcome, ${data?.name}`}</span>
+            <span className="text-lg font-medium text-white">{`Welcome, ${data?.firstName}`}</span>
           )}
         </div>
 
