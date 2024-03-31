@@ -14,6 +14,8 @@ export interface Account {
 }
 
 export interface Transaction {
+  to: string
+  from: string
   id: number
   type: string
   amount: number
