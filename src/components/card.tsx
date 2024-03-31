@@ -1,4 +1,11 @@
+import Cookies from 'js-cookie'
+
+import { useUser } from '../queries/user'
+
 const Card = () => {
+  const hashedCPF = Cookies.get('hashedCPF') ?? ''
+  const { data, isLoading } = useUser(hashedCPF)
+
   return (
     <div className="flex h-96 items-center gap-44 border-b border-zinc-800 px-40 text-white ">
       <span className="text-2xl">Credit card</span>
@@ -14,8 +21,14 @@ const Card = () => {
 
           <span className="mb-4 text-lg">1234 5678 9012 3456</span>
           <div className="mb-4 flex justify-between">
-            <span className="text-sm ">Cleverton Rocha</span>
-            <span className="text-sm ">12/24</span>
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-zinc-800 border-t-lime-500" />
+              </div>
+            ) : (
+              <span className="text-sm ">{`${data?.firstName} ${data?.lastName}`}</span>
+            )}
+            <span className="text-sm ">12/28</span>
           </div>
 
           <span className="text-sm ">CVV - 123</span>
