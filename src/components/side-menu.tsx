@@ -3,6 +3,7 @@ import {
   HandCoinsIcon,
   HandshakeIcon,
   LandmarkIcon,
+  Receipt,
   User,
 } from 'lucide-react'
 import Cookies from 'js-cookie'
@@ -12,7 +13,7 @@ import { useUser } from '../queries/user'
 import MenuItem from './menu-item'
 import Logout from './logout'
 
-const SideMenu = () => {
+const SideMenu: React.FC = () => {
   const hashedCPF = Cookies.get('hashedCPF') ?? ''
 
   const { data, isLoading } = useUser(hashedCPF)
@@ -38,6 +39,7 @@ const SideMenu = () => {
           <MenuItem href="/transfer" label="Transfer" Icon={HandshakeIcon} />
           <MenuItem href="/deposit" label="Deposit" Icon={DollarSignIcon} />
           <MenuItem href="/withdraw" label="Withdraw" Icon={HandCoinsIcon} />
+          <MenuItem href="/transactions" label="Transactions" Icon={Receipt} />
         </div>
         <Logout />
       </div>
