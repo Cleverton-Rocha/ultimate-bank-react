@@ -12,6 +12,7 @@ import Deposit from './pages/deposit.tsx'
 import Transfer from './pages/transfer.tsx'
 import Withdraw from './pages/withdraw.tsx'
 import queryClient from './services/queryClient.ts'
+import Transactions from './pages/transactions.tsx'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: '/withdraw',
         element: <Withdraw />,
+      },
+      {
+        path: '/transactions',
+        element: <Transactions />,
+      },
+      {
+        path: '*',
+        element: <div>404 Not Found</div>,
       },
     ],
   },
