@@ -13,6 +13,7 @@ import Transfer from './pages/transfer.tsx'
 import Withdraw from './pages/withdraw.tsx'
 import queryClient from './services/queryClient.ts'
 import Transactions from './pages/transactions.tsx'
+import Profile from './pages/profile.tsx'
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/transactions',
         element: <Transactions />,
+      },
+      {
+        path: '/user/profile',
+        element: <Profile />,
       },
       {
         path: '*',
