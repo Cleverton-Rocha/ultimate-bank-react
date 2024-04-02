@@ -40,11 +40,11 @@ const SideMenu: React.FC = () => {
           <MenuItem href="/deposit" label="Deposit" Icon={DollarSignIcon} />
           <MenuItem href="/withdraw" label="Withdraw" Icon={HandCoinsIcon} />
           <MenuItem href="/transactions" label="Transactions" Icon={Receipt} />
+          <MenuItem href="/user/profile" label="Profile" Icon={User} />
         </div>
         <Logout />
       </div>
     </>
   )
 }
-
 export default SideMenu
