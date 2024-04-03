@@ -16,7 +16,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'prettier/prettier': 'error',
-    'unused-imports/no-unused-imports': 'error',
     'import/order': ['error', { 'newlines-between': 'always' }],
+    'unused-imports/no-unused-imports': 'error',
   },
 }
