@@ -3,12 +3,12 @@ import { AxiosError } from 'axios'
 import toast from 'react-hot-toast'
 
 import { transaction, transfer } from '../../services/api'
-import { transactionRequest, transferRequest } from '../../utils/types'
+import { TransactionRequest, TransferRequest } from '../../utils/types'
 import queryClient from '../../services/queryClient'
 
 export function useTransaction() {
   return useMutation({
-    mutationFn: (data: transactionRequest) => {
+    mutationFn: (data: TransactionRequest) => {
       return transaction(data)
     },
     onSuccess: () => {
@@ -24,7 +24,7 @@ export function useTransaction() {
 
 export function useTransfer() {
   return useMutation({
-    mutationFn: (data: transferRequest) => {
+    mutationFn: (data: TransferRequest) => {
       return transfer(data)
     },
     onSuccess: () => {
