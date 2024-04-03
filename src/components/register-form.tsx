@@ -13,11 +13,11 @@ const registerSchema = z
   .object({
     firstName: z
       .string()
-      .min(1, 'Name must have at least 1 characters.')
+      .min(1, 'First name must have at least 1 characters.')
       .transform((firstName) => firstName.replace(/[0-9]/g, '')),
     lastName: z
       .string()
-      .min(1, 'Name must have at least 1 characters.')
+      .min(1, 'Last Name must have at least 1 characters.')
       .transform((lastName) => lastName.replace(/[0-9]/g, '')),
     email: z.string().email('Write a valid email.'),
     CPF: z
