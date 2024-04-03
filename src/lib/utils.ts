@@ -43,3 +43,9 @@ export const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
   const name = e.target
   name.value = name.value.replace(/[0-9]/g, '')
 }
+
+export const handleEmptyPasswordInput = (
+  e: React.ChangeEvent<HTMLInputElement>,
+) => {
+  e.target.value = e.target.value ?? ''
+}
