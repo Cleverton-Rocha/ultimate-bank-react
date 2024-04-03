@@ -7,6 +7,7 @@ import { login, register, getUser, updateUser } from '../../services/api'
 import { LoginFormValues } from '../../components/login-form'
 import { RegisterFormValues } from '../../components/register-form'
 import { UpdateUserData } from '../../utils/types'
+import queryClient from '../../services/queryClient'
 
 export function useRegister() {
   return useMutation({
@@ -60,6 +61,7 @@ export function useUpdateUser() {
     },
     onSuccess: () => {
       toast.success('Profile updated successfully!')
+      queryClient.invalidateQueries({ queryKey: ['user'] })
     },
     onError: (error: AxiosError) => {
       const errorMessage = error.response?.data as string
