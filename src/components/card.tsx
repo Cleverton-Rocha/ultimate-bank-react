@@ -19,7 +19,7 @@ const Card = () => {
             />
           </div>
 
-          <span className="mb-4 text-lg">1234 5678 9012 3456</span>
+          <span className="mb-4 text-lg">**** **** **** 3456</span>
           <div className="mb-4 flex justify-between">
             {isLoading ? (
               <div className="flex items-center justify-center">
@@ -31,7 +31,7 @@ const Card = () => {
             <span className="text-sm ">12/28</span>
           </div>
 
-          <span className="text-sm ">CVV - 123</span>
+          <span className="text-sm ">CVV ****</span>
         </div>
       </div>
     </div>
