@@ -2,12 +2,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import Cookies from 'js-cookie'
-import { useState } from 'react'
+import { useEffect } from 'react'
 
 import { handleNameInput } from '../lib/utils'
 import { useUpdateUser, useUser } from '../queries/user'
-
-import PasswordToggle from './password-toggle'
 
 const profileSchema = z.object({
   firstName: z
@@ -19,41 +17,37 @@ const profileSchema = z.object({
     .min(1, 'Name must have at least 1 characters.')
     .transform((lastName) => lastName.replace(/[0-9]/g, '')),
   email: z.string().email('Write a valid email.'),
-  password: z
-    .string()
-    .min(8, 'Password must have at least 8 characters.')
-    .nullable(),
 })
 
 type ProfileFormValues = z.infer<typeof profileSchema>
 
 const ProfileForm = () => {
-  const [inputType, setInputType] = useState('password')
   const hashedCPF = Cookies.get('hashedCPF') ?? ''
   const user = useUser(hashedCPF)
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
-    reset,
   } = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
-    defaultValues: {
-      firstName: user.data?.firstName ?? 'First name',
-      lastName: user.data?.lastName ?? 'Last name',
-      email: user.data?.email ?? 'Email',
-    },
   })
 
-  const updateUser = useUpdateUser()
+  useEffect(() => {
+    if (user.data) {
+      setValue('firstName', user.data.firstName)
+      setValue('lastName', user.data.lastName)
+      setValue('email', user.data.email)
+    }
+  }, [user.data, setValue])
 
+  const updateUser = useUpdateUser()
   const onSubmit = (data: ProfileFormValues) => {
     updateUser.mutate({
       hashedCPF,
       ...data,
     })
-    reset()
   }
 
   return (
@@ -118,29 +112,6 @@ const ProfileForm = () => {
               {errors.email && (
                 <span className="text-sm text-red-500">
                   {errors.email.message}
-                </span>
-              )}
-            </div>
-            <div className="mb-3">
-              <label
-                htmlFor="password"
-                className="text-md flex items-center gap-4 font-semibold text-white text-opacity-70"
-              >
-                <span>Password</span>
-                <PasswordToggle
-                  inputType={inputType}
-                  setInputType={setInputType}
-                />
-              </label>
-              <input
-                type={inputType}
-                {...register('password')}
-                placeholder="********"
-                className="mb-0.5 mt-3 w-full border-b border-white border-opacity-20 bg-zinc-950 py-2 text-lg outline-none"
-              />
-              {errors.password && (
-                <span className="text-sm text-red-500">
-                  {errors.password.message}
                 </span>
               )}
             </div>
