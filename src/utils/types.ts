@@ -37,16 +37,24 @@ export interface RegisterResponse {
   password: string
 }
 
-export interface transactionRequest {
+export interface TransactionRequest {
   hashedCPF: string
   amount: number
   type: string
   description: string
 }
 
-export interface transferRequest {
+export interface TransferRequest {
   hashedCPF: string
   receiverCPF: string
   amount: number
   description: string
+}
+
+export interface UpdateUserData {
+  hashedCPF: string
+  firstName?: string
+  lastName?: string
+  email?: string
+  password?: string | null
 }
