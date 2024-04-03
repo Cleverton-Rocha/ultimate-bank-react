@@ -5,8 +5,9 @@ import {
   LoginResponse,
   RegisterResponse,
   User,
-  transactionRequest,
-  transferRequest,
+  TransactionRequest,
+  TransferRequest,
+  UpdateUserData,
 } from '../utils/types'
 import { LoginFormValues } from '../components/login-form'
 import { RegisterFormValues } from '../components/register-form'
@@ -34,7 +35,7 @@ export async function getUser(hashedCPF: string) {
   return data
 }
 
-export async function transaction(transactionData: transactionRequest) {
+export async function transaction(transactionData: TransactionRequest) {
   const { data } = await api.post(
     '/bank/account/transaction',
     transactionData,
@@ -43,8 +44,15 @@ export async function transaction(transactionData: transactionRequest) {
   return data
 }
 
-export async function transfer(transferData: transferRequest) {
+export async function transfer(transferData: TransferRequest) {
   const { data } = await api.post('/bank/account/transfer', transferData, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  return data
+}
+
+export async function updateUser(userData: UpdateUserData) {
+  const { data } = await api.put(`/bank/user/${userData.hashedCPF}`, userData, {
     headers: { Authorization: `Bearer ${token}` },
   })
   return data
