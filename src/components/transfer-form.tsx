@@ -40,9 +40,7 @@ const TransferForm: React.FC = () => {
   const onSubmit = (data: TransferFormValues) => {
     transfer.mutate({
       hashedCPF,
-      amount: data.amount,
-      receiverCPF: data.receiverCPF,
-      description: data.description,
+      ...data,
     })
     reset()
   }
