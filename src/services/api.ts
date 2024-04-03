@@ -52,8 +52,12 @@ export async function transfer(transferData: TransferRequest) {
 }
 
 export async function updateUser(userData: UpdateUserData) {
-  const { data } = await api.put(`/bank/user/${userData.hashedCPF}`, userData, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
+  const { data } = await api.patch(
+    `/bank/user/${userData.hashedCPF}`,
+    userData,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  )
   return data
 }
