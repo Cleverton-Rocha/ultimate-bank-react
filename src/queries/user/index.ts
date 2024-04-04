@@ -9,6 +9,7 @@ import {
   getUser,
   updateUser,
   updatePassword,
+  deleteAccount,
 } from '../../services/api'
 import { LoginFormValues } from '../../components/login-form'
 import { RegisterFormValues } from '../../components/register-form'
@@ -84,6 +85,25 @@ export function useUpdatePassword() {
     onSuccess: () => {
       toast.success('You must login again.')
       toast.success('Password updated successfully!')
+      queryClient.invalidateQueries({ queryKey: ['user'] })
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 1500)
+    },
+    onError: (error: AxiosError) => {
+      const errorMessage = error.response?.data as string
+      toast.error(errorMessage)
+    },
+  })
+}
+
+export function useDeleteAccount() {
+  return useMutation({
+    mutationFn: (hashedCPF: string) => {
+      return deleteAccount(hashedCPF)
+    },
+    onSuccess: () => {
+      toast.success('Account deleted successfully!')
       queryClient.invalidateQueries({ queryKey: ['user'] })
       setTimeout(() => {
         window.location.href = '/'
