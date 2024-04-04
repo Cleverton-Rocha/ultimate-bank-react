@@ -11,7 +11,7 @@ const UserOptions = () => {
               Profile
             </span>
           </Link>
-          <Link to="/user/profile" className="w-3/3 text-lg font-semibold">
+          <Link to="/user/password" className="w-3/3 text-lg font-semibold">
             <span className="text-white opacity-70 transition duration-200 hover:opacity-100">
               Change password
             </span>
