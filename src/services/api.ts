@@ -73,3 +73,11 @@ export async function updatePassword(updatePasswordData: UpdatePasswordData) {
   )
   return data
 }
+
+export async function deleteAccount(hashedCPF: string) {
+  const { data } = await api.delete(`/bank/user/${hashedCPF}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+
+  return data
+}
