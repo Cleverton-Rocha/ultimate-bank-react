@@ -16,7 +16,10 @@ const UserOptions = () => {
               Change password
             </span>
           </Link>
-          <Link to="/user/profile" className="w-3/3 text-lg font-semibold">
+          <Link
+            to="/user/delete-account"
+            className="w-3/3 text-lg font-semibold"
+          >
             <span className="text-red-600 transition duration-200 hover:text-red-700">
               Delete my account
             </span>
