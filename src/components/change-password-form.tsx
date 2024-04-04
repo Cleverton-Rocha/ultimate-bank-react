@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useUpdatePassword } from '../queries/user'
 
 import PasswordToggle from './password-toggle'
+import SessionHeader from './session-header'
 
 const passwordSchema = z.object({
   currentPassword: z
@@ -71,7 +72,7 @@ const ChangePasswordForm = () => {
   return (
     <>
       <div className="flex h-[600px] items-center gap-48 border-b border-zinc-800 px-40 text-white ">
-        <span className="ml-2 text-2xl">Password</span>
+        <SessionHeader title="Password" />
         <div className="flex w-[300px] flex-col">
           <form onSubmit={handleSubmit((data) => onSubmit(data))}>
             <div>
