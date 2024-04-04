@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { handleNameInput } from '../lib/utils'
 import { useUpdateUser, useUser } from '../queries/user'
 
+import SessionHeader from './session-header'
+
 const profileSchema = z.object({
   firstName: z
     .string()
@@ -53,7 +55,7 @@ const ProfileForm = () => {
   return (
     <>
       <div className="flex h-[600px] items-center gap-56 border-b border-zinc-800 px-40 text-white ">
-        <span className="ml-1 text-2xl">Profile</span>
+        <SessionHeader title="Profile" />
         <div className=" flex w-[300px] flex-col">
           <form onSubmit={handleSubmit((data) => onSubmit(data))}>
             <div>
