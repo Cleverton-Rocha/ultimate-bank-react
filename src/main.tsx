@@ -15,6 +15,7 @@ import queryClient from './services/queryClient.ts'
 import Transactions from './pages/transactions.tsx'
 import User from './pages/user.tsx'
 import Profile from './pages/profile.tsx'
+import ChangePassword from './pages/change-password.tsx'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: '/user/profile',
         element: <Profile />,
+      },
+      {
+        path: '/user/password',
+        element: <ChangePassword />,
       },
       {
         path: '*',
