@@ -57,3 +57,9 @@ export interface UpdateUserData {
   lastName?: string
   email?: string
 }
+
+export interface UpdatePasswordData {
+  hashedCPF: string
+  currentPassword: string
+  newPassword: string
+}
