@@ -1,29 +1,55 @@
-# React + TypeScript + Vite
+# Ultimate Bank 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o código-fonte para um aplicativo de frontend desenvolvido em React, que utiliza várias bibliotecas populares para facilitar o desenvolvimento de formulários dinâmicos, consumo de APIs e manipulação de estado. O aplicativo consome uma API chamada Ultimate Bank, que fornece serviços bancários básicos. O frontend é construído com React Query, React Hook Form, Zod, Axios e estilizado com Tailwind CSS.
 
-Currently, two official plugins are available:
+Pré-requisitos
+--------------
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Antes de iniciar, verifique se o seguinte software está instalado em seu sistema:
 
-## Expanding the ESLint configuration
+-   Node.js
+-   npm (gerenciador de pacotes do Node.js)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Instalação
+----------
 
-- Configure the top-level `parserOptions` property like this:
+Siga estas etapas para configurar e executar o aplicativo:
 
-```js
-export default {
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1.  Clone estes repositórios:
+
+```bash
+git clone https://github.com/Cleverton-Rocha/ultimate-bank-react
+git clone https://github.com/Cleverton-Rocha/ultimate-bank-java
+```
+(Siga também as instruções do repositório do backend.)
+
+1.  Navegue até o diretório do projeto:
+
+```bash
+cd ultimate-bank-react
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1.  Instale as dependências usando npm:
+
+ 
+```bash
+npm install
+```
+
+1.  Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O aplicativo será executado em `http://localhost:3000`.
+
+Tecnologias Utilizadas
+----------------------
+
+-   React: Biblioteca JavaScript para criar interfaces de usuário.
+-   React Query: Biblioteca para gerenciamento de dados em aplicativos React.
+-   React Hook Form: Biblioteca para criar formulários React com ganchos.
+-   Zod: Uma biblioteca de validação de esquema TypeScript.
+-   Axios: Cliente HTTP para fazer solicitações para a API.
+-   Tailwind CSS: Framework de estilo CSS utilitário.
