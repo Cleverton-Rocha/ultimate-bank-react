@@ -8,6 +8,7 @@ import {
   TransactionRequest,
   TransferRequest,
   UpdateUserData,
+  UpdatePasswordData,
 } from '../utils/types'
 import { LoginFormValues } from '../components/login-form'
 import { RegisterFormValues } from '../components/register-form'
@@ -55,6 +56,17 @@ export async function updateUser(userData: UpdateUserData) {
   const { data } = await api.patch(
     `/bank/user/${userData.hashedCPF}`,
     userData,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  )
+  return data
+}
+
+export async function updatePassword(updatePasswordData: UpdatePasswordData) {
+  const { data } = await api.put(
+    `/bank/user/${updatePasswordData.hashedCPF}`,
+    updatePasswordData,
     {
       headers: { Authorization: `Bearer ${token}` },
     },
